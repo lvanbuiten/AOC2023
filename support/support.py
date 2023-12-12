@@ -60,6 +60,16 @@ def adjacent_8_including(x: int, y: int) -> Generator[tuple[int, int], None, Non
         for x_d in (-1, 0, 1):
             yield x + x_d, y + y_d
 
+def adjacent_8_in_range(x: int, y: int, maxX: int, maxY: int) -> Generator[tuple[int, int], None, None]:
+    for y_d in (-1, 0, 1):
+        for x_d in (-1, 0, 1):
+            if y_d == x_d == 0:
+                continue
+            newX = x + x_d
+            newY = y + y_d
+            if newX >= 0 and newX < maxX and newY >= 0 and newY < maxY:
+                yield newX, newY
+
 
 def parse_coords_int(s: str) -> dict[tuple[int, int], int]:
     coords = {}
